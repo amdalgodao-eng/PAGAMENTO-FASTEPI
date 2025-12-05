@@ -71,6 +71,34 @@ PT-BR: Neste projeto tive que passar uma noite virado por conta do prazo, mas fo
 
 EN-US: In this project, I had to stay up all night due to the deadline, but it was very satisfying to create and deliver. I was able to use functionalities like 'z-index' in CSS, as well as manipulate the element's position with 'relative' and 'absolute'. JavaScript wasn't as difficult as in the last project; I’m getting more comfortable with JS. I also used forEach loops for form validation (something I used to handle manually for all validations), and I utilized the 'keyup' function with 'addEventListener,' which is a big novelty for me. It was a 7-day project—long and challenging, but at the same time extremely rewarding to feel I improved compared to last week’s project. I hope you enjoy it!
 
+## ⚠️ Segurança | Security
+
+**PT-BR:**
+
+🔒 **IMPORTANTE**: Este é um projeto educacional/demonstrativo. Para aplicações reais:
+
+- ❌ **NUNCA** armazene dados de cartão de crédito em front-end
+- ❌ **NUNCA** exponha tokens ou chaves de API no código JavaScript
+- ❌ **NUNCA** envie dados sensíveis para repositórios públicos
+- ✅ Use backend seguro com criptografia (HTTPS, SSL/TLS)
+- ✅ Implemente PCI DSS compliance para dados de pagamento
+- ✅ Use serviços especializados como Stripe, PayPal, ou PagSeguro
+- ✅ Mantenha credenciais em arquivos `.env` (nunca versionados)
+
+**EN-US:**
+
+🔒 **IMPORTANT**: This is an educational/demo project. For real applications:
+
+- ❌ **NEVER** store credit card data in frontend
+- ❌ **NEVER** expose tokens or API keys in JavaScript code
+- ❌ **NEVER** send sensitive data to public repositories
+- ✅ Use secure backend with encryption (HTTPS, SSL/TLS)
+- ✅ Implement PCI DSS compliance for payment data
+- ✅ Use specialized services like Stripe, PayPal, or similar
+- ✅ Keep credentials in `.env` files (never version controlled)
+
+---
+
 ## Contato - Redes Sociais | Contact - Social Meidas 
 
 <a href="mailto:felipe.lima0160@gmail.com">![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)</a>  <a href="https://wa.me/5521979926096">![Whatsapp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)</a>  <a href="https://www.linkedin.com/in/felipe-lima01/">![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)</a> 
