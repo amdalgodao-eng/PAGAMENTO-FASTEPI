@@ -26,3 +26,6 @@ yarn-error.log*
 
 # Logs
 *.log
+
+# Dados sensíveis
+dados/cartoes.json
